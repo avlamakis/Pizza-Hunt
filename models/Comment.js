@@ -6,13 +6,16 @@ const ReplySchema = new Schema(
     // set custom id to avoid confusion with parent comment _id
     replyId: {
       type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId()
+      default: () => new Types.ObjectId(),
     },
     replyBody: {
-      type: String
+      type: String,
+      require: true,
+      trim: true
     },
     writtenBy: {
-      type: String
+      type: String,
+      require: true
     },
     createdAt: {
       type: Date,
@@ -30,10 +33,12 @@ const ReplySchema = new Schema(
 const CommentSchema = new Schema(
   {
     writtenBy: {
-      type: String
+      type: String,
+      require: true
     },
     commentBody: {
-      type: String
+      type: String,
+      require: true
     },
     createdAt: {
       type: Date,
